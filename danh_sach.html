@@ -55,7 +55,7 @@
                                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home mr-1"></i>
                                             Dashboard</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Mượn trả sách</li>
+                                     <li class="breadcrumb-item active" aria-current="page">Nhà cung cấp</li>
                                 </ol>
                             </nav>
                         </div>
@@ -64,20 +64,19 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
-                                    Danh sách đang mượn
+                                    Danh sách
                                 </div>
                                 <div class="card-body">
                                     <div class="row mb-2">
                                         <div class="col-6">
-                                            <a class="btn btn-primary" data-toggle="modal" data-target="#tao_hoa_don">
+                                            <a th:href=@{'/nha-cung-cap/them'} class="btn btn-primary">
                                                 <i class="fas fa-plus"></i>
                                             </a>
                                         </div>
                                         <div class="col-6">
-                                            <form class="form-inline justify-content-end" th:action="@{/muon-sach}">
+                                            <form class="form-inline justify-content-end" th:action="@{/nha-cung-cap}">
                                                 <div class="form-group mx-sm-3 mb-2">
-                                                    <input type="text" class="form-control"  name="search"  th:value="${search}"
-                                                        placeholder="Search">
+                                                    <input type="text" class="form-control" name="search"  th:value="${search}" placeholder="Search">
                                                 </div>
                                                 <button type="submit" class="btn btn-primary mb-2">
                                                     <i class="fas fa-search"></i>
@@ -88,29 +87,29 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Id</th>
-                                                <th scope="col">Khách hàng</th>
+                                                <th scope="col">Mã nhà cung cấp</th>
+                                                <th scope="col">Tên nhà cung cấp</th>
+                                                <th scope="col">Địa chỉ</th>
+                                                <th scope="col">Email</th>
                                                 <th scope="col">Điện thoại</th>
-                                                <th scope="col">Ngày mượn</th>
-                                                <th scope="col">Số lượng</th>
-                                                <th scope="col">Thành tiền</th>
+                                                <th scope="col">Ghi chu</th>
                                                 <th scope="col">Active</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr  th:each="item : ${DanhSach}">
+                                            <tr th:each="item : ${DanhSach}">
                                                 <th th:text="${item.id}">1</th>
-                                                <td th:text="${item.khachHang.ten}">Mark</td>
-                                                <td th:text="${item.khachHang.dienThoai}">Mark</td>
-                                                <td th:text="${item.ngayMuon}">Mark</td>
-                                                <td th:text="${item.soLuong}">Mark</td>
-                                                <td th:text="${item.thanhTien}">Mark</td>
+                                                <td th:text="${item.ten}">Mark</td>
+                                                <td th:text="${item.diaChi}">Mark</td>
+                                                <td th:text="${item.email}">Mark</td>
+                                                <td th:text="${item.dienThoai}">Mark</td>
+                                                <td th:text="${item.ghiChu}">Mark</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a  th:href="@{'/muon-sach/' + ${item.id} + '/muon-sach-chi-tiet'}"  class="btn btn-success">
-                                                            <i class="fas fa-eye"></i>
+                                                        <a th:href="@{'/nha-cung-cap/sua/'+ ${item.id}}" class="btn btn-success">
+                                                            <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a th:href="@{'/muon-sach/xoa/' + ${item.id}}"   class="btn btn-danger">
+                                                        <a  th:href="@{'/nha-cung-cap/xoa/'+ ${item.id}}" class="btn btn-danger">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </a>
                                                     </div>
@@ -126,40 +125,7 @@
             </main>
         </div>
     </div>
-    <!-- Modal thêm hóa đơn-->
-    <div class="modal fade" id="tao_hoa_don" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Tạo hóa đơn mượn</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form  th:action="@{'/muon-sach/save'}" th:object="${MuonSach}" method="POST">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label>Khách hàng</label>
-                                <select class="form-control" th:field="*{khachHang}">
-                                    <div th:each="item : ${KhachHang}">
-                                         <option th:value="${item.id}"
-                                            th:text="${item.ten}+ ' - ' + ${item.dienThoai} ">Choose...</option>
-                                    </div>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 </body>
 

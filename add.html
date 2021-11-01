@@ -55,7 +55,7 @@
                                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home mr-1"></i>
                                             Dashboard</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Khách hàng</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Nhà cung cấp</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
                                 </ol>
                             </nav>
@@ -70,9 +70,9 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <form  th:action="@{'/khach-hang/save'}" th:object="${KhachHang}" method="POST">
+                                            <form  th:action="@{'/nha-cung-cap/save'}" th:object="${NhaCungCap}" method="POST">
                                                 <div class="mb-4">
-                                                    <a class="btn btn-primary" th:href=@{'/khach-hang'}>
+                                                    <a class="btn btn-primary"  th:href=@{'/nha-cung-cap'} >
                                                         <i class="fas fa-arrow-left"></i>
                                                     </a>
                                                     <button type="submit" class="btn btn-primary">
@@ -81,28 +81,32 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-1">
-                                                        <label>ID</label>
+                                                        <label>Mã sách</label>
                                                         <input type="text" class="form-control" readonly th:field="*{id}">
                                                     </div>
                                                     <div class="form-group col-md-7">
-                                                        <label>Tên khách hàng</label>
+                                                        <label>Tên nhà cung cấp</label>
                                                         <input type="text" class="form-control" th:field="*{ten}">
                                                     </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label>Điện thoại</label>
+                                                    <div class="form-group col-md-2">
+                                                        <label>Email</label>
+                                                        <input type="text" class="form-control" th:field="*{email}">
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label>Số điện thoại</label>
                                                         <input type="text" class="form-control" th:field="*{dienThoai}">
                                                     </div>
+
                                                 </div>
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <label>Nghề nghiệp</label>
-                                                        <textarea class="form-control"
-                                                                  aria-label="With textarea" th:field="*{ngheNghiep}"></textarea>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
+                                                    <div class="form-group col-md-6">
                                                         <label>Địa chỉ</label>
+                                                        <input type="text" class="form-control" th:field="*{diaChi}">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Ghi chú</label>
                                                         <textarea class="form-control"
-                                                            aria-label="With textarea" th:field="*{diaChi}"></textarea>
+                                                            aria-label="With textarea" th:field="*{ghiChu}"></textarea>
                                                     </div>
                                                 </div>
                                             </form>
