@@ -55,8 +55,8 @@
                                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home mr-1"></i>
                                             Dashboard</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">Sách</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page" th:text="${Title}">Thêm mới</li>
+                                    <li class="breadcrumb-item"><a href="#">Quản trị viên</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
                                 </ol>
                             </nav>
                         </div>
@@ -65,14 +65,14 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
-                                    <span  th:text="${Title}"></span>
+                                    Thêm mới
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <form  th:action="@{'/sach/save'}" th:object="${Sach}" method="POST">
+                                            <form  th:action="@{'/user/save'}" th:object="${User}" method="POST">
                                                 <div class="mb-4">
-                                                    <a class="btn btn-primary"  th:href=@{'/sach'} >
+                                                    <a class="btn btn-primary"  th:href=@{'/user'} >
                                                         <i class="fas fa-arrow-left"></i>
                                                     </a>
                                                     <button type="submit" class="btn btn-primary">
@@ -81,39 +81,33 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-1">
-                                                        <label>Mã sách</label>
+                                                        <label>Mã user</label>
                                                         <input type="text" class="form-control" readonly th:field="*{id}">
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label>Tên sách</label>
-                                                        <input type="text" class="form-control" th:field="*{tenSach}">
+                                                    <div class="form-group col-md-3">
+                                                        <label>Tên user</label>
+                                                        <input type="text" class="form-control" th:field="*{name}">
                                                     </div>
-                                                    <div class="form-group col-md-5">
-                                                        <label>Tác giả</label>
-                                                        <input type="text" class="form-control" th:field="*{tacGia}">
+                                                    <div class="form-group col-md-3">
+                                                        <label>Email</label>
+                                                        <input type="text" class="form-control" th:field="*{email}">
                                                     </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-2">
-                                                        <label>Giá bìa</label>
-                                                        <input type="text" class="form-control" th:field="*{giaBia}">
+                                                    <div class="form-group col-md-3">
+                                                        <label>Điện thoại</label>
+                                                        <input type="text" class="form-control" th:field="*{phone}">
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Thể loại sách</label>
-                                                        <select class="form-control" th:field="*{theLoaiSach}">
-                                                            < <div th:each="item : ${TheLoai}">
-                                                                <option th:value="${item.id}"
-                                                                    th:text="${item.tenTheLoai}">Choose...</option>
-                                                            </div>
+                                                        <label>Phân quyền</label>
+                                                        <select class="form-control" name="role">
+                                                            <div th:each="item : ${Role}">
+                                                            <option th:value="${item.id}"
+                                                                    th:text="${item.name}">Choose...</option>
+                                                        </div>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-4">
-                                                        <label>Nhà xuất bản</label>
-                                                        <input type="text" class="form-control" th:field="*{nhaXuatBan}">
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label>Năm xuất bản</label>
-                                                        <input type="text" class="form-control" th:field="*{namXuatBan}">
+                                                        <label>Password</label>
+                                                        <input type="text" class="form-control" th:field="*{password}">
                                                     </div>
                                                 </div>
                                             </form>
