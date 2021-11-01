@@ -55,7 +55,7 @@
                                     <li class="breadcrumb-item"><a href="#"><i class="fas fa-home mr-1"></i>
                                             Dashboard</a>
                                     </li>
-                                     <li class="breadcrumb-item active" aria-current="page">Nhà cung cấp</li>
+                                     <li class="breadcrumb-item active" aria-current="page">Sách</li>
                                 </ol>
                             </nav>
                         </div>
@@ -69,12 +69,12 @@
                                 <div class="card-body">
                                     <div class="row mb-2">
                                         <div class="col-6">
-                                            <a th:href=@{'/nha-cung-cap/them'} class="btn btn-primary">
+                                            <a th:href=@{'/sach/them'}  class="btn btn-primary">
                                                 <i class="fas fa-plus"></i>
                                             </a>
                                         </div>
                                         <div class="col-6">
-                                            <form class="form-inline justify-content-end" th:action="@{/nha-cung-cap}">
+                                            <form class="form-inline justify-content-end" th:action="@{/sach}">
                                                 <div class="form-group mx-sm-3 mb-2">
                                                     <input type="text" class="form-control" name="search"  th:value="${search}" placeholder="Search">
                                                 </div>
@@ -87,29 +87,35 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Mã nhà cung cấp</th>
-                                                <th scope="col">Tên nhà cung cấp</th>
-                                                <th scope="col">Địa chỉ</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Điện thoại</th>
-                                                <th scope="col">Ghi chu</th>
-                                                <th scope="col">Active</th>
+                                                <th scope="col">Mã sách</th>
+                                                <th >Tên sách</th>
+                                                <th  >Tác giả</th>
+                                                <th >Nhà xuất bản</th>
+                                                <th >Năm xuất bản</th>
+                                                <th >Thể loại</th>
+                                                <th >Số lượng</th>
+                                                <th >Giá bìa</th>
+                                                <th >Giá mượn</th>
+                                                <th  >Active</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr th:each="item : ${DanhSach}">
                                                 <th th:text="${item.id}">1</th>
-                                                <td th:text="${item.ten}">Mark</td>
-                                                <td th:text="${item.diaChi}">Mark</td>
-                                                <td th:text="${item.email}">Mark</td>
-                                                <td th:text="${item.dienThoai}">Mark</td>
-                                                <td th:text="${item.ghiChu}">Mark</td>
+                                                <td th:text="${item.tenSach}">1</td>
+                                                <td th:text="${item.tacGia}">1</td>
+                                                <td th:text="${item.nhaXuatBan}">1</td>
+                                                <td th:text="${item.namXuatBan}">1</td>
+                                                <td th:text="${item.theLoaiSach.tenTheLoai}">1</td>
+                                                <td th:text="${item.soLuong}">1</td>
+                                                <td th:text="${item.giaBia}">1</td>
+                                                <td th:text="${item.giaMuon}">1</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a th:href="@{'/nha-cung-cap/sua/'+ ${item.id}}" class="btn btn-success">
+                                                        <a th:href="@{'/sach/sua/'+ ${item.id}}" class="btn btn-success">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a  th:href="@{'/nha-cung-cap/xoa/'+ ${item.id}}" class="btn btn-danger">
+                                                        <a th:href="@{'/sach/xoa/'+ ${item.id}}" class="btn btn-danger">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </a>
                                                     </div>
